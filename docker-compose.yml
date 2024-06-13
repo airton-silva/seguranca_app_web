@@ -41,10 +41,12 @@ services:
 
     pgadmin:
         image: dpage/pgadmin4
+        container_name: pgadmin4_container
         restart: unless-stopped
         environment:
-            PGADMIN_DEFAULT_EMAIL: contato@especializati.com.br
+            PGADMIN_DEFAULT_EMAIL: pgadmin@mail.com
             PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD:-admin}
+        user: '$UID:$GID'
         volumes:
             - ./.docker/pgadmin:/var/lib/pgadmin
         ports:
